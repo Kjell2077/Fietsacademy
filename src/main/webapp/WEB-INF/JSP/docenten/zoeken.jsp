@@ -7,7 +7,7 @@
 <html lang='nl'>
 
 <head>
-<v:head title='${empty docent ? "Docent zoeken" : docent.naam}'/>
+<v:head title='${empty docent ? "Docent zoeken" : docent.familienaam}'/>
 </head>
 
 <body>
@@ -27,7 +27,8 @@ Docent niet gevonden
 </c:if>
 
 <c:if test='${not empty docent}'>
-${docent.naam}, wedde: &euro; <fmt:formatNumber value='${docent.wedde}'/>
+${docent.geslacht == 'MAN' ? '&#x2642;' : '&#x2640;'}
+${docent.familienaam}, wedde: &euro; <fmt:formatNumber value='${docent.wedde}'/>
 </c:if>
 
 </body>
