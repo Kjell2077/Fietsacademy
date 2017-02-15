@@ -39,4 +39,10 @@ return getEntityManager().createQuery(
 "select max(d.wedde) from Docent d", BigDecimal.class).getSingleResult();
 }
 
+public void algemeneOpslag(BigDecimal factor) {
+getEntityManager().createNamedQuery("Docent.algemeneOpslag")
+.setParameter("factor", factor)
+.executeUpdate();
+}
+
 }
