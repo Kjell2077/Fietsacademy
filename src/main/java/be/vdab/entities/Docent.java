@@ -3,7 +3,12 @@ package be.vdab.entities;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -29,6 +34,11 @@ private BigDecimal wedde;
 private long rijksRegisterNr;
 @Enumerated(EnumType.STRING)
 private Geslacht geslacht;
+
+//@ElementCollection
+//@CollectionTable (name = "docentenbijnamen", joinColumns = @JoinColumn(name = "docentid") )
+//@Column(name = "bijnaam")
+//private Set<String> bijnamen;
 
 // je maakt getters voor de private variabelen, behalve voor serialVersionUID
 
@@ -76,6 +86,8 @@ setWedde(wedde);
 setGeslacht(geslacht);
 
 setRijksRegisterNr(rijksRegisterNr);
+
+//bijnamen = new HashSet<>();
 
 }
 
@@ -125,9 +137,13 @@ public void setRijksRegisterNr(long rijksRegisterNr) {
 if ( ! isRijksRegisterNrValid(rijksRegisterNr)) {
 throw new IllegalArgumentException();
 }
-
 this.rijksRegisterNr = rijksRegisterNr;
 }
+
+//public Set<String> getBijnamen() {
+//	return Collections.unmodifiableSet(bijnamen);
+//}
+
 
 public void opslag(BigDecimal percentage) {
 BigDecimal factor =
